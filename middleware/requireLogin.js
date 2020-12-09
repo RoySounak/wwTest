@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const {jwt_secret} = require('../keys')
 const mongoose = require('mongoose')
-const User = mongoose.model('User')
+const Student = mongoose.model('Student')
 
 module.exports=(req,res,next)=>{
     const {authorization} = req.headers
@@ -14,8 +14,8 @@ module.exports=(req,res,next)=>{
             return res.status(401).json({error:"You should be logged in"})
         }
         const {_id} = payload
-        User.findById(_id).then(userdata=>{
-            req.user = userdata
+        Student.findById(_id).then(userdata=>{
+            req.student = userdata
             next()
         })
     })

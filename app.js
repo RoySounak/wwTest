@@ -18,18 +18,16 @@ mongoose.connection.on('Error',(err)=>{
     console.log("MongoDB is Not connected",err)
 })
 
-require('./models/user')
-require('./models/post')
-require('./models/Comment')
+require('./models/student')
+require('./models/class')
 app.use(express.json())
 
-app.use(require('./routes/user'))
-app.use(require('./routes/post'))
-app.use(require('./routes/comment'))
+app.use(require('./routes/student'))
+app.use(require('./routes/class'))
 
-// app.get("/",(req,res)=>{
-//     res.send("Hello Change")
-// })
+app.get("/h",(req,res)=>{
+    res.send("Hello testing")
+})
 app.listen(PORT,()=>{
     console.log("Server is running on ", PORT)
 })
